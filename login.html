@@ -1,0 +1,128 @@
+<html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+<head>
+    <title>Login page</title>
+</head>
+
+<div class="contact-title">
+    <h1>AVON TRIOMIC Admin site</h1>
+    <h2>Log in</h2>
+</div>
+
+<div class="contact-form">
+<form id="contact-form" method="POST" action="http://localhost/unity/loginhandler.php">
+
+    <input name="name" id="name" type="text" class="form-control" placeholder="Your name here" onblur="updateHash()" required>
+    <br>
+    <input name="password" id="password" type="password" class="form-control" placeholder="password here" required>
+    <br>
+    <input type="submit" class="form-control submit" value="send">
+</form>
+<p style="color: white; font-size: larger;">Dont have an admin account?: <a class="link" href="./signup.html">Sign up!</a></p>
+<p id="fail" style="color: rgb(255, 14, 14);"></p>
+</div>
+
+<style>
+    body{
+        margin:0;
+        padding: 0;
+        text-align: center;
+        background: linear-gradient(rgba(0,0,50,0.5),rgba(0,0,50,0.5)),url(f.jpg);
+        background-size: cover;
+        background-position: center;
+        font-family: sans-serif;
+
+    }
+    .contact-title{
+        margin-top: 100px;
+        color: #fff;
+        text-transform: uppercase;
+        transition: all 4s ease-in-out;
+    }
+    .contact-title h1{
+
+        font-size: 32px;
+        line-height: 10px;
+    }
+    .contact-title h2{
+
+font-size: 16px;
+
+}
+
+form{
+    margin-top: 50px;
+    transition: all 4s ease-in-out;
+}
+
+.form-control{
+width: 600px;
+background: transparent;
+border: none;
+outline: none;
+border-bottom: 1px solid gray;
+color: rgb(255, 0, 0);
+font-size: 18px;
+margin-bottom: 16px;
+
+}
+
+input{
+
+    height:45px;
+}
+
+form .submit{
+
+    background:#ff5722;
+    border-color: transparent;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+form .submit:hover  {
+
+background-color: #f44336;
+cursor: pointer;
+}
+::placeholder { 
+  color: rgb(144, 160, 137);
+  opacity: 1;
+}
+
+a:hover {
+  color: purple;
+}
+
+a{
+ color: red;
+ border: black;
+}
+</style>
+<script>
+
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const user = urlParams.get('status');
+console.log(user);
+if(user!=null){
+    console.log("POPOPPOPOP");
+document.getElementById('fail').innerHTML="Login fail";
+
+}
+
+function updateHash(){
+    var name=document.getElementById("name").value;
+    var encrypted = CryptoJS.AES.encrypt(name, 'somekey')
+    document.getElementById("contact-form").action=`http://localhost/unity/loginhandler.php?hname=${encrypted.toString().replace('+','xMl3Jk').replace('/','Por21Ld').replace('=','Ml32')}`;
+
+}
+
+
+
+</script>
+</html>

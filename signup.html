@@ -1,0 +1,258 @@
+<html>
+
+<head>
+    <title>Signup page</title>
+</head>
+
+<div class="contact-title">
+    <h1>AVON TRIOMIC Admin site</h1>
+    <h2>Sign up</h2>
+</div>
+
+<div class="contact-form">
+    <form id="contact-form" method="POST" action="http://localhost/unity/signuphamdler.php">
+
+        <input name="name" id="name" type="text" class="form-control" placeholder="Set Username" onblur="validateName()"
+            required>
+        <p id="namevali" style="color: red;margin-right: 580px;"></p>
+        <br>
+        <input name="password" id="password" type="password" class="form-control"
+            placeholder="Set Password (More than 8 characters)" onblur="validatePassword()" required>
+        <p id="passwordvali" style="color: red;margin-right: 580px;"></p>
+        <br>
+        <input id="cpassword" type="password" class="form-control" placeholder="Confirm Password"
+            onblur="checkPassword()" required>
+        <p id="password2vali" style="color: red;margin-right: 580px;"></p>
+        <br>
+        <div
+            style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin-right: 300px;">
+            <h2 style="color: blanchedalmond;font-family: sans-serif;">Rank:</h2>
+            <select name="rank" id="rank" style="margin-left: 30px; width: 200px; height: 100px;" onBlur="rankvali()" required>
+                <option value="Officer">Officer</option>
+                <option value="Caddet">Caddet</option>
+                <option value="Lieutenet">Lieutenet</option>
+                <option value="General" selected>General</option>
+            </select>
+        </div>
+        <br>
+        <input id="subbutton" type="submit" class="form-control submit" value="send" disabled>
+    </form>
+    <p style="color: white; font-size: larger;">Alrady have an account?<a class="link" href="./login.html">Log in!</a>
+    </p>
+</div>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background: linear-gradient(rgba(0, 0, 50, 0.5), rgba(0, 0, 50, 0.5)), url(f2.jpg);
+        background-size: cover;
+        background-position: center;
+        font-family: sans-serif;
+
+    }
+
+    .contact-title {
+        margin-top: 100px;
+        color: #fff;
+        text-transform: uppercase;
+        transition: all 4s ease-in-out;
+    }
+
+    .contact-title h1 {
+
+        font-size: 32px;
+        line-height: 10px;
+    }
+
+    .contact-title h2 {
+
+        font-size: 16px;
+
+    }
+
+    form {
+        margin-top: 50px;
+        transition: all 4s ease-in-out;
+    }
+
+    .form-control {
+        width: 600px;
+        background: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid gray;
+        color: rgb(255, 0, 0);
+        font-size: 18px;
+        margin-bottom: 16px;
+
+    }
+
+    input {
+
+        height: 45px;
+    }
+
+    form .submit {
+
+        background: #ff5722;
+        border-color: transparent;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        height: 50px;
+        margin-top: 20px;
+    }
+
+    form .submit:hover {
+
+        background-color: #f44336;
+        cursor: pointer;
+    }
+
+    ::placeholder {
+        color: rgb(144, 160, 137);
+        opacity: 1;
+    }
+
+    a:hover {
+        color: purple;
+    }
+
+    a {
+        color: red;
+        border: black;
+    }
+
+    option {
+
+        color: blue;
+        font-size: 14px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    select {
+        font-size: 14px;
+        color: rgb(238, 16, 16);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    form .submit:disabled {
+        background: #dddddd;
+        color: rgb(87, 84, 84);
+    }
+</style>
+<script>
+    //validate
+    //if validation true enable button
+    //document.getElementById("myText").disabled = true;
+    var namecheck = false;
+    var passwordcheck = false;
+    var passwordcheck2 = false;
+
+    //var showButton=false;
+
+    function validateName() {
+        var pattern = /^[a-zA-Z_ ]{8,}$/;
+        console.log(namecheck, passwordcheck2, passwordcheck);
+        if (namecheck == true && passwordcheck == true && passwordcheck2 == true) {
+            console.log("yey");
+            document.getElementById("subbutton").disabled = false;
+        }
+        if (document.getElementById('name').value == "") {
+            document.getElementById('namevali').innerHTML = "Name cannot be blank";
+            namecheck = false;
+
+        }
+        else if (document.getElementById('name').value.trim().length == 0) {
+            document.getElementById('namevali').innerHTML = "Name cannot be blank";
+            namecheck = false;
+
+        }
+        else if (!pattern.test(document.getElementById('name').value)) {
+            document.getElementById('namevali').innerHTML = "Name has to be more than 8 characters with no special characters";
+            namecheck = false;
+        }
+        else {
+            document.getElementById('namevali').innerHTML = "";
+            namecheck = true;
+
+        }
+
+        /* if(showButton==true){
+         console.log("yey");
+         document.getElementById("subbutton").disabled = false;
+        
+ 
+     }
+      */
+    }
+
+    function validatePassword() {
+        console.log(namecheck, passwordcheck2, passwordcheck);
+        if (namecheck == true && passwordcheck == true && passwordcheck2 == true) {
+            console.log("yey");
+            document.getElementById("subbutton").disabled = false;
+        }
+        var pattern = /^[a-zA-Z_@#$%^&*0-9]{10,}$/;
+        if (document.getElementById('password').value == "") {
+            document.getElementById('passwordvali').innerHTML = "password cannot be blank";
+            passwordcheck = false;
+
+        }
+        else if (document.getElementById('password').value.trim().length == 0) {
+            document.getElementById('passwordvali').innerHTML = "password cannot be blank";
+            passwordcheck = false;
+
+        }
+        else if (!pattern.test(document.getElementById('password').value)) {
+            document.getElementById('passwordvali').innerHTML = "Name has to be more than 8 characters with no special characters";
+            passwordcheck = false;
+
+        }
+        else {
+            document.getElementById('passwordvali').innerHTML = "";
+            passwordcheck = true;
+
+
+        }
+
+        /* if(showButton==true){
+         console.log("yey");
+         document.getElementById("subbutton").disabled = false;
+        
+ 
+     }
+      */
+    }
+
+    function checkPassword() {
+        console.log(namecheck, passwordcheck2, passwordcheck);
+        if (namecheck == true && passwordcheck == true && passwordcheck2 == true) {
+            console.log("yey");
+            document.getElementById("subbutton").disabled = false;
+        }
+        if (document.getElementById('password').value != document.getElementById('cpassword').value) {
+            document.getElementById('password2vali').innerHTML = "Passwords have to be the same!";
+            passwordcheck2 = false
+        }
+        else {
+            document.getElementById('password2vali').innerHTML = "";
+            passwordcheck2 = true;
+
+        }
+    }
+function rankvali(params) {
+    console.log(namecheck, passwordcheck2, passwordcheck);
+        if (namecheck == true && passwordcheck == true && passwordcheck2 == true) {
+            console.log("yey");
+            document.getElementById("subbutton").disabled = false;
+        }
+}
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</html>
