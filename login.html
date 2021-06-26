@@ -118,7 +118,7 @@ document.getElementById('fail').innerHTML="Login fail";
 function updateHash(){
     var name=document.getElementById("name").value;
     var encrypted = CryptoJS.AES.encrypt(name, 'somekey')
-    document.getElementById("contact-form").action=`http://localhost/unity/loginhandler.php?hname=${encrypted.toString().replace('+','xMl3Jk').replace('/','Por21Ld').replace('=','Ml32')}`;
+    document.getElementById("contact-form").action=`https://lian-mao.github.io/trimic-fyp-backend/loginhandler.php?hname=${encrypted.toString().replace('+','xMl3Jk').replace('/','Por21Ld').replace('=','Ml32')}`;
 
 }
 
