@@ -311,7 +311,7 @@
         document.getElementById('close').href = `https://lian-mao.github.io/FYP-AVON-TRIMIC-SITE/mainpage.html?name=${Huser}`;
 
 
-        $.get(`https://lian-mao.github.io/trimic-fyp-backend/getUserGroup.php?name=${user}`, function (data) {
+        $.get(`https://trimoic-fyp.herokuapp.com/getUserGroup.php?name=${user}`, function (data) {
 
             if (data == "0 results") {
                 document.getElementById('maintitle').innerHTML = "Click on add to create a new group!"
