@@ -521,8 +521,9 @@
                                         if (dropdownSelec.value == "Score") {
 
                                             document.getElementById("table" + indii[4]).remove();
-
+                                            document.getElementById("modalLoader").style.display="inline-block";
                                             $.get(`https://trimoic-fyp.herokuapp.com/MembersingroupScore.php?group=${groupN}`, function (data) {
+                                                document.getElementById("modalLoader").style.display="none";
                                                 var main = document.createElement("table");
                                                 var titleRow = document.createElement("tr");
 
