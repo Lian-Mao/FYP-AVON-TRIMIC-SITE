@@ -78,7 +78,7 @@
                         <h3
                             style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
                             New Group</h2>
-                            <form id="ck" method="POST" action="http://localhost/unity/creategroup.php">
+                            <form id="ck" method="POST" action="https://trimoic-fyp.herokuapp.com/creategroup.php">
                                 <input name="owner" id="ownername" type="text" placeholder="Group name"
                                     style="visibility: hidden;" pattern="[A-Za-z0-9\W]{8,}">
                                 <input name="Gname" id="nname" type="text" class="form-control" placeholder="Group name"
@@ -381,7 +381,7 @@
                         var groupN = this.id;
 
 
-                        $.get(`http://localhost/unity/Membersingroup.php?group=${this.id}`, function (data) {
+                        $.get(`https://trimoic-fyp.herokuapp.com/Membersingroup.php?group=${this.id}`, function (data) {
 
 
                             if (data != "0 results") {
@@ -516,7 +516,7 @@
 
                                             document.getElementById("table" + indii[4]).remove();
 
-                                            $.get(`http://localhost/unity/MembersingroupScore.php?group=${groupN}`, function (data) {
+                                            $.get(`https://trimoic-fyp.herokuapp.com/MembersingroupScore.php?group=${groupN}`, function (data) {
                                                 var main = document.createElement("table");
                                                 var titleRow = document.createElement("tr");
 
@@ -605,7 +605,7 @@
                                                     remove.classList.add("abootan");
                                                     remove.onclick = function () {
                                                         //  alert(indi[0] + "is removed");
-                                                        $.post("http://localhost/unity/removeuser.php", { User: indii[4] }, function (data, status) {
+                                                        $.post("https://trimoic-fyp.herokuapp.com/removeuser.php", { User: indii[4] }, function (data, status) {
 
                                                             if (data == "success") {
 
@@ -648,7 +648,7 @@
                                         else if (dropdownSelec.value == "Progress") {
                                             document.getElementById("table" + indii[4]).remove();
                                             //OPENNNN
-                                            $.get(`http://localhost/unity/MembersingroupProgress.php?group=${groupN}`, function (data) {
+                                            $.get(`https://trimoic-fyp.herokuapp.com/MembersingroupProgress.php?group=${groupN}`, function (data) {
                                                 var main = document.createElement("table");
                                                 var titleRow = document.createElement("tr");
 
@@ -749,7 +749,7 @@
                                                     remove.classList.add("abootan");
                                                     remove.onclick = function () {
                                                         //  alert(indi[0] + "is removed");
-                                                        $.post("http://localhost/unity/removeuser.php", { User: indii[4] }, function (data, status) {
+                                                        $.post("https://trimoic-fyp.herokuapp.com/removeuser.php", { User: indii[4] }, function (data, status) {
 
                                                             if (data == "success") {
 
@@ -824,7 +824,7 @@
                                     }
                                     remove.onclick = function () {
                                         //  alert(indi[0] + "is removed");
-                                        $.post("http://localhost/unity/removeuser.php", { User: indii[4] }, function (data, status) {
+                                        $.post("https://trimoic-fyp.herokuapp.com/removeuser.php", { User: indii[4] }, function (data, status) {
 
                                             if (data == "success") {
 
@@ -873,7 +873,7 @@
                                 deleteTable.classList.add("bbootan");
                                 deleteTable.id = "delete" + `${indii[4]}`;
                                 deleteTable.onclick = function () {
-                                    $.post("http://localhost/unity/deletegroup.php", { groupN: groupN, groupId: indii[5] }, function (data, status) {
+                                    $.post("https://trimoic-fyp.herokuapp.com/deletegroup.php", { groupN: groupN, groupId: indii[5] }, function (data, status) {
                                         // alert(data);
                                         if (data == "sucess") {
 
@@ -941,7 +941,7 @@
                                 deleteTable.classList.add("bbootan");
 
                                 deleteTable.onclick = function () {
-                                    $.post("http://localhost/unity/deletegroup.php", { groupN: groupN, groupId: 'x' }, function (data, status) {
+                                    $.post("https://trimoic-fyp.herokuapp.com/deletegroup.php", { groupN: groupN, groupId: 'x' }, function (data, status) {
                                         // alert(data);
                                         if (data == "sucess") {
 
@@ -965,7 +965,7 @@
                                 addMember.onclick = function () {
 
 
-                                    $.get(`http://localhost/unity/showmemberstogroup.php`, function (data) {
+                                    $.get(`https://trimoic-fyp.herokuapp.comy/showmemberstogroup.php`, function (data) {
                                         // alert(data);
                                         if (data != "0 results") {
                                             document.getElementById(`Add${groupN}`).disabled = true;
@@ -1021,7 +1021,7 @@
                                                 add.id = `${indi[4]}`;
                                                 add.onclick = function add(params) {
                                                     // alert(groupN);
-                                                    $.post("http://localhost/unity/addusergroup.php", { User: indi[4], group: groupN }, function (data, status) {
+                                                    $.post("https://trimoic-fyp.herokuapp.com/addusergroup.php", { User: indi[4], group: groupN }, function (data, status) {
                                                         //  alert("Data: " + data + "\nStatus: " + status);
                                                         alert(data);
                                                         if (data == "success") {
@@ -1090,7 +1090,7 @@
         //ll
         function hashuser() {
 
-            document.getElementById('ck').action = `http://localhost/unity/creategroup.php?Huser=${Huser}`;
+            document.getElementById('ck').action = `https://trimoic-fyp.herokuapp.com/creategroup.php?Huser=${Huser}`;
         }
 
         // Get the modal
@@ -1132,7 +1132,7 @@
             document.getElementById("member").style.display = "block";
             document.getElementById("maintext").innerHTML = `Create group for ${group}`;
 
-            $.get(`http://localhost/unity/showmemberstogroup.php`, function (data) {
+            $.get(`https://trimoic-fyp.herokuapp.com/showmemberstogroup.php`, function (data) {
                 if (data != "0 results") {
                     var main = document.createElement("table");
                     var titleRow = document.createElement("tr");
@@ -1186,7 +1186,7 @@
                         add.id = `${indi[4]}`;
                         add.onclick = function add(params) {
 
-                            $.post("http://localhost/unity/addusergroup.php", { User: indi[4], group: group }, function (data, status) {
+                            $.post("https://trimoic-fyp.herokuapp.com/addusergroup.php", { User: indi[4], group: group }, function (data, status) {
                                 //  alert("Data: " + data + "\nStatus: " + status);
                                 // alert(data);
                                 if (data == "success") {

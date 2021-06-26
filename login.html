@@ -117,7 +117,7 @@ document.getElementById('fail').innerHTML="Login fail";
 
 function updateHash(){
     var name=document.getElementById("name").value;
-    var encrypted = CryptoJS.AES.encrypt(name, 'somekey')
+    var encrypted = CryptoJS.AES.encrypt(name, 'somekey');
     document.getElementById("contact-form").action=`https://trimoic-fyp.herokuapp.com/loginhandler.php?hname=${encrypted.toString().replace('+','xMl3Jk').replace('/','Por21Ld').replace('=','Ml32')}`;
 
 }
